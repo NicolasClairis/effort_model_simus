@@ -1,44 +1,26 @@
-function[E] = E_computation(Abase, Atarget, Amax, Amin)
-% [E] = E_computation(Abase, Atarget, Amax, Amin)
+function[E] = E_computation(Abase, Atarget, wc)
+% [E] = E_computation(Abase, Atarget, wc)
+% E_computation computes effort based on Abase, Atarget and wc entered in
+% inputs.
 %
 % INPUTS
-% Abase: numeric value or vector of A at baseline
+% Abase: numeric value or vector of arousal at baseline
 %
-% Atarget: numeric value or vector of target A to reach
+% Atarget: numeric value or vector of target arousal to reach
 %
-% Amax: numeric value or vector of maximal A that one can attain (by
-% default it will be set up to 1)
-%
-% Amin: numeric value or vector of minimal A that one can attain (by
-% default it will be set up to 0, but this doesn't make sense in real
-% conditions)
+% wc: numeric value or vector indicating work capacity
 %
 % OUTPUTS
-% E: numeric value of E
+% E: numeric value of effort
 % 
 
 %% check inputs and define default values
-% Amax
-if ~exist('Amax','var') || isempty(Amax)
-    Amax = 1;
+% default wc
+if ~exist('wc','var') || isempty(wc)
+    wc = 1;
 end
-
-% Amin
-if ~exist('Amin','var') || isempty(Amin)
-    Amin = 0;
-end
-
-%% compute inputs for E
-Aincrease = Atarget > Abase; % increase in arousal
-Adecrease = Atarget <= Abase; % decrease in arousal
-
-Wtarget = abs(Atarget - Abase); % distance between Atarget and Abase
-Wmax = (Amax - Abase).*Aincrease + (Abase - Amin).*Adecrease; % max possible work = increasing A to Amax (if arousal increase) or decreasing A to Amin (if arousal decrease)
 
 %% compute E
-E = Wtarget./Wmax;
-
-% %% constraint E to be positive
-% E(E < 0) = 0;
+E = abs(Atarget - Abase)./wc;
 
 end % function
