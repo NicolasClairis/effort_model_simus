@@ -70,9 +70,9 @@ fig;
 
 % graph for varying Atarget for a given Abaseline
 subplot(1,3,1); hold on;
-E1a_hdl = plot(Atarget1a, E1a);
-E1b_hdl = plot(Atarget1b, E1b);
-E1c_hdl = plot(Atarget1c, E1c);
+E1a_hdl = plot(Atarget1, E1a);
+E1b_hdl = plot(Atarget1, E1b);
+E1c_hdl = plot(Atarget1, E1c);
 fit_hdl_upgrade(E1a_hdl,col1a);
 fit_hdl_upgrade(E1b_hdl,col1b);
 fit_hdl_upgrade(E1c_hdl,col1c);
@@ -92,8 +92,8 @@ legend([E1a_hdl,E1b_hdl,E1c_hdl],...
 % graph for varying Abaseline for a given Atarget
 subplot(1,3,2); hold on;
 E2a_hdl = plot(Abase2, E2a);
-E2b_hdl = plot(Abase2b, E2b);
-E2c_hdl = plot(Abase2c, E2c);
+E2b_hdl = plot(Abase2, E2b);
+E2c_hdl = plot(Abase2, E2c);
 fit_hdl_upgrade(E2a_hdl,col2a);
 fit_hdl_upgrade(E2b_hdl,col2b);
 fit_hdl_upgrade(E2c_hdl,col2c);
